@@ -1,0 +1,178 @@
+Mike’s Test Cases:
+
+— Hexadecimal Cases —
+
+Input: "0x55 0x93ty 0xacbedgf  0x034 0x"
+Output:
+ 
+Hexadecimal : '0x55' 
+Hexadecimal : '0x93' 
+Error [Escape Character 't'] - [0x74]
+Error [Escape Character 'y'] - [0x79]
+Hexadecimal : '0xacbed' 
+Error [Escape Character 'g'] - [0x67]
+Error [Escape Character 'f'] - [0x66]
+Hexadecimal : '0x034' 
+Malformed : '0x'
+
+
+Input: "0x21 0x42342 0x987 0xbc221 "
+Output:
+
+Hexadecimal : '0x21’ 
+Hexadecimal : '0x42342’
+Hexadecimal : '0x987’ 
+Hexadecimal : '0xbc221’
+
+
+— Octal Check —
+
+Input: "01 02 03 04 08 09 045789 02468”
+Output:
+
+Octal : '01'
+Octal : '02'
+Octal : '03'
+Octal : '04'
+Decimal (Zero): '0'
+Decimal : '8'
+Decimal (Zero): '0'
+Decimal : '9'
+Octal : '0457'
+Decimal : '89'
+Octal : '0246'
+Decimal : '8'
+
+Input: “03 0432342 00 03 06   024"
+Output:
+
+Octal : '03'
+Octal : '0432342'
+Octal : '00'
+Octal : '03'
+Octal : '06'
+Octal : '024'
+
+
+— Decimal Check —
+
+Input: “113 0 9 “
+OUTPUT:
+
+Decimal : '113'
+Decimal (Zero): '0'
+Decimal : '9'
+
+Input: "1 2 3 4 5   98  "
+Output:
+
+Decimal : '1'
+Decimal : '2'
+Decimal : '3'
+Decimal : '4'
+Decimal : '5'
+Decimal : '98'
+
+Input “123456789”
+Output:
+
+Decimal : '123456789'
+
+
+— Float-point Check —
+
+Input: “928734592384752.0298745236e-2342345 3e+2 8.3e-54”
+Output:
+
+Floating-Point : '928734592384752.0298745236e-2342345'
+Floating-Point : '3e+2'
+Floating-Point : '8.3e-54'
+
+Input: “ 1.2 4.99 123.456”
+Output:
+
+Floating-Point : '1.2'
+Floating-Point : '4.99'
+Floating-Point : '123.456'
+
+Input: " 0.87e+2 47e-5 15e+53 456.654e-682  "
+Output:
+
+Floating-Point : '0.87e+2'
+Floating-Point : '47e-5'
+Floating-Point : '15e+53'
+Floating-Point : '456.654e-682'
+
+
+
+
+
+
+— Mixed Checks —
+
+
+
+Input: " 731lll 0.92e+2 0x942n2b0984qfi424a”
+Output:
+
+Decimal : '731'
+Error [Escape Character 'l'] - [0x6c]
+Error [Escape Character 'l'] - [0x6c]
+Error [Escape Character 'l'] - [0x6c]
+Floating-Point : '0.92e+2'
+Hexadecimal : '0x942' 
+Error [Escape Character 'n'] - [0x6e]
+Decimal : '2'
+Error [Escape Character 'b'] - [0x62]
+Decimal (Zero): '0'
+Decimal : '984'
+Error [Escape Character 'q'] - [0x71]
+Error [Escape Character 'f'] - [0x66]
+Error [Escape Character 'i'] - [0x69]
+Decimal : '424'
+Error [Escape Character 'a'] - [0x61]
+
+Input: “042n13728s9 0w 732.13yd0x442”
+Output:
+
+Octal : '042'
+Error [Escape Character 'n'] - [0x6e]
+Decimal : '13728'
+Error [Escape Character 's'] - [0x73]
+Decimal : '9'
+Decimal (Zero): '0'
+Error [Escape Character 'w'] - [0x77]
+Floating-Point : '732.13'
+Error [Escape Character 'y'] - [0x79]
+Error [Escape Character 'd'] - [0x64]
+Hexadecimal : '0x442'  
+
+— Malformed Check —
+
+Input: “ 2. 48e 0x  54.3e- 0x "
+Output:
+
+Malformed : '2.'
+Malformed : '48e'
+Malformed : '0x'
+Malformed : '54.3e-'
+Malformed : '0x'
+
+— Escape Check —
+
+Input: "\a \b \f \n \r \t \v mike 3.1415”
+Output:
+
+ERROR: Escape Character Entered: [0x07]
+ERROR: Escape Character Entered: [0x08]
+ERROR: Escape Character Entered: [0x0c]
+ERROR: Escape Character Entered: [0x0a]
+ERROR: Escape Character Entered: [0x0d]
+ERROR: Escape Character Entered: [0x09]
+ERROR: Escape Character Entered: [0x0b]
+Error [Escape Character 'm'] - [0x6d]
+Error [Escape Character 'i'] - [0x69]
+Error [Escape Character 'k'] - [0x6b]
+Error [Escape Character 'e'] - [0x65]
+Floating-Point : '3.1415'
+
